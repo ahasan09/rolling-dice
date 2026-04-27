@@ -4,14 +4,14 @@ function init() {
 }
 
 function roll() {
-    var countOutcomes = 12;
-    var numberOfRolls = 1000;
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    const countOutcomes = 12;
+    const numberOfRolls = 1000;
+    const counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (var i = 0; i < numberOfRolls; i++) {
-        var rollOfFirstDice = Math.floor(Math.random() * 6) + 1;
-        var rollOfSecondDice = Math.floor(Math.random() * 6) + 1;
-        var rollOfDices = rollOfFirstDice + rollOfSecondDice;
+    for (let i = 0; i < numberOfRolls; i++) {
+        const rollOfFirstDice = Math.floor(Math.random() * 6) + 1;
+        const rollOfSecondDice = Math.floor(Math.random() * 6) + 1;
+        const rollOfDices = rollOfFirstDice + rollOfSecondDice;
         counts[rollOfDices] = counts[rollOfDices] + 1;
     }
 
@@ -20,9 +20,9 @@ function roll() {
 }
 
 function generateResultTable(counts, countOutcomes) {
-    var tableHTML = "<table>";
+    let tableHTML = "<table>";
     tableHTML += "<tr><th>Combined Dice Number</th><th>Frequency</th></tr>";
-    for (var i = 2; i <= countOutcomes; i++) {
+    for (let i = 2; i <= countOutcomes; i++) {
         tableHTML += "<tr><td>";
         tableHTML += i;
         tableHTML += "</td>";
@@ -32,16 +32,16 @@ function generateResultTable(counts, countOutcomes) {
     }
 
     tableHTML += "</table>";
-    var resultTable = document.getElementById("resultTable");
+    const resultTable = document.getElementById("resultTable");
     resultTable.innerHTML = tableHTML;
 }
 
 function generateResultBarGraph(counts, countOutcomes, numberOfRolls) {
-    var barGraph = document.getElementById("barGraph");
-    var graphHTML = "";
+    const barGraph = document.getElementById("barGraph");
+    let graphHTML = "";
 
-    for (var i = 2; i <= countOutcomes; i++) {
-        var frequencyRatio = counts[i] / numberOfRolls * 100;
+    for (let i = 2; i <= countOutcomes; i++) {
+        let frequencyRatio = counts[i] / numberOfRolls * 100;
         frequencyRatio = frequencyRatio.toFixed(1);
         graphHTML += `
         <li>
@@ -53,4 +53,3 @@ function generateResultBarGraph(counts, countOutcomes, numberOfRolls) {
 }
 
 window.addEventListener("load", init);
-
